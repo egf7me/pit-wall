@@ -1,0 +1,784 @@
+:root {
+    --black: #0b0b0f;
+    --panel: #16161d;
+    --red: #e10600;
+    --white: #f5f5f7;
+    --muted: #898994;
+    --line: #292932;
+    --ferrari: #ff1744;
+    --mclaren: #ff8700;
+    --mercedes: #00d2be;
+    --audi: #b4b4bf;
+    --font: 'Titillium Web', 'Segoe UI', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/* 1. Cabeçalho: três grupos alinhados com flex e space-between. */
+.topbar {
+    min-height: 76px;
+    padding: 12px 3.8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+    background: var(--black);
+}
+
+.logo {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.menu a {
+    color: var(--muted);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    transition: color .2s ease;
+}
+
+.menu a:hover {
+    color: var(--white);
+}
+
+.btn-primary,
+.btn-outline {
+    min-height: 44px;
+    padding: 11px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    font-size: .75rem;
+    font-weight: 900;
+    letter-spacing: .45px;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.btn-primary {
+    background: var(--red);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: #bd0803;
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    border-color: var(--white);
+    background: transparent;
+    color: var(--white);
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+.topbar-button {
+    min-width: 178px;
+}
+
+/* 2. Hero: degradê com corte seco + foto posicionada à direita. */
+.hero {
+    position: relative;
+    min-height: 357px;
+    padding: 42px 3.8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    background:
+        linear-gradient(110deg,
+            var(--black) 0%, var(--black) 62%,
+            var(--red) 62%, var(--red) 64%,
+            rgba(11, 11, 15, .35) 64%),
+        url("img/piloto.jpg") right center / 67% 100% no-repeat;
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 51%;
+}
+
+.eyebrow {
+    margin-bottom: 13px;
+    color: var(--red);
+    font-size: .72rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(3.2rem, 5vw, 4.25rem);
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: .98;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--red);
+}
+
+.hero-description {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: .9rem;
+    line-height: 1.5;
+}
+
+.hero-actions {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.track-info {
+    position: absolute;
+    z-index: 1;
+    right: 4.3%;
+    bottom: 46px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.track-stat {
+    min-width: 88px;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 1px solid rgba(245, 245, 247, .22);
+    text-align: center;
+}
+
+.track-stat strong {
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.track-stat span {
+    margin-top: 3px;
+    color: #c0c0c8;
+    font-size: .58rem;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+}
+
+.kerb {
+    height: 10px;
+    background: repeating-linear-gradient(90deg,
+        var(--red) 0, var(--red) 40px,
+        var(--white) 40px, var(--white) 80px);
+}
+
+.container {
+    width: min( calc(100% - 64px), 946px );
+    margin: 0 auto;
+}
+
+.content-section {
+    padding-top: 48px;
+}
+
+.section-heading {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.section-number {
+    color: var(--red);
+    font-size: .82rem;
+    font-style: italic;
+    font-weight: 900;
+}
+
+.section-heading h2 {
+    font-size: 1.82rem;
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: -.5px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* 3. Pilotos: grid auto-fit para adaptar a quantidade de colunas. */
+.drivers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
+}
+
+.driver-card {
+    min-height: 126px;
+    padding: 11px 15px 13px;
+    overflow: hidden;
+    background: var(--panel);
+    border-top: 4px solid var(--team);
+    transition: transform .2s ease, background .2s ease;
+}
+
+.driver-card:hover {
+    transform: translateY(-6px);
+    background: #1b1b24;
+}
+
+.team-ferrari { --team: var(--ferrari); }
+.team-mclaren { --team: var(--mclaren); }
+.team-mercedes { --team: var(--mercedes); }
+.team-audi { --team: var(--audi); }
+
+.car-number {
+    display: block;
+    color: var(--team);
+    font-size: 3.3rem;
+    font-style: italic;
+    font-weight: 900;
+    line-height: .98;
+    opacity: .36;
+}
+
+.driver-name {
+    margin-top: 3px;
+    font-size: .9rem;
+    line-height: 1.15;
+    text-transform: uppercase;
+}
+
+.driver-name strong {
+    font-weight: 900;
+}
+
+.team-name {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: .72rem;
+}
+
+/* 4. Filtros com flex e tabela sem dependência de JavaScript. */
+.classification-section {
+    padding-top: 48px;
+}
+
+.filters {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.filter-item {
+    min-width: 0;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-item label,
+.form-group label {
+    color: var(--muted);
+    font-size: .64rem;
+    font-weight: 900;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+}
+
+.filter-item input,
+.filter-item select,
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    border-radius: 0;
+    outline: none;
+    background: #0a0a0e;
+    color: var(--white);
+    font-size: .85rem;
+}
+
+.filter-item input:focus,
+.filter-item select:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--red);
+}
+
+.filter-button {
+    min-width: 98px;
+    min-height: 42px;
+}
+
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    font-size: .82rem;
+}
+
+th,
+td {
+    padding: 10px 13px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    color: var(--muted);
+    font-size: .62rem;
+    font-weight: 900;
+    letter-spacing: .9px;
+    text-transform: uppercase;
+}
+
+tbody tr {
+    transition: background .2s ease;
+}
+
+tbody tr:hover {
+    background: #20202a;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.leader {
+    background: rgba(225, 6, 0, .13);
+}
+
+.leader .position {
+    background: var(--red);
+    color: var(--white);
+}
+
+.position {
+    width: 27px;
+    height: 27px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    color: var(--black);
+    font-weight: 900;
+}
+
+.team-bar {
+    width: 4px;
+    height: 16px;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: -3px;
+}
+
+.bar-mclaren { background: var(--mclaren); }
+.bar-ferrari { background: var(--ferrari); }
+.bar-mercedes { background: var(--mercedes); }
+.bar-audi { background: var(--audi); }
+
+.muted-cell {
+    color: var(--muted);
+    font-size: .76rem;
+}
+
+.points {
+    font-weight: 900;
+}
+
+/* 5. Ingressos: seção de texto + formulário em duas colunas. */
+.tickets {
+    padding-top: 48px;
+    padding-bottom: 56px;
+    display: grid;
+    grid-template-columns: .88fr 1.25fr;
+    align-items: start;
+    gap: 34px;
+}
+
+.tickets-info .section-heading {
+    margin-bottom: 20px;
+}
+
+.tickets-intro {
+    margin-bottom: 16px;
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.notice {
+    margin-bottom: 8px;
+    padding: 10px 13px;
+    border-left: 3px solid #ffd000;
+    background: rgba(255, 208, 0, .10);
+    color: #ffd000;
+    font-size: .78rem;
+    font-weight: 700;
+}
+
+.ticket-option {
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid var(--line);
+    font-size: .82rem;
+}
+
+.ticket-option strong {
+    color: var(--red);
+    font-size: .83rem;
+    font-weight: 900;
+}
+
+.ticket-form {
+    padding: 22px;
+    border-top: 4px solid var(--red);
+    background: var(--panel);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 16px;
+}
+
+.form-group {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group small {
+    color: var(--muted);
+    font-size: .65rem;
+}
+
+.form-group input[type="file"] {
+    min-height: 42px;
+    padding: 7px;
+    border-style: dashed;
+    color: var(--muted);
+    font-size: .75rem;
+}
+
+.form-group input[type="file"]::file-selector-button {
+    margin-right: 8px;
+    padding: 4px 8px;
+    border: 0;
+    background: #d8d8dc;
+    color: #18181d;
+    font: inherit;
+    cursor: pointer;
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 2px;
+}
+
+/* 6. Rodapé centralizado. */
+.footer {
+    min-height: 64px;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: .7rem;
+    text-align: center;
+}
+
+.footer span {
+    color: var(--red);
+    font-weight: 900;
+}
+
+.footer strong {
+    color: #b9b9c2;
+    font-weight: 700;
+}
+
+/* 7. Celular e tablet: seções empilhadas e controles mais compactos. */
+@media (max-width: 768px) {
+    .topbar {
+        min-height: 62px;
+        padding: 10px 20px;
+        gap: 10px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .topbar-button {
+        min-width: 0;
+        min-height: 38px;
+        padding: 8px 12px;
+        font-size: .62rem;
+    }
+
+    .hero {
+        min-height: 0;
+        padding: 34px 24px 26px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        background:
+            linear-gradient(rgba(11, 11, 15, .76), rgba(11, 11, 15, .84)),
+            url("img/piloto.jpg") center 58% / cover no-repeat;
+    }
+
+    .hero-copy {
+        max-width: 100%;
+    }
+
+    .eyebrow {
+        font-size: .62rem;
+        letter-spacing: 1.5px;
+    }
+
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+
+    .hero-description {
+        max-width: 440px;
+        font-size: .82rem;
+    }
+
+    .desktop-break {
+        display: none;
+    }
+
+    .hero-actions {
+        gap: 8px;
+    }
+
+    .hero-actions .btn-primary,
+    .hero-actions .btn-outline {
+        min-height: 40px;
+        padding: 9px 12px;
+        font-size: .64rem;
+    }
+
+    .track-info {
+        position: static;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .track-stat {
+        min-width: 0;
+        width: 33.333%;
+        padding: 0 10px;
+    }
+
+    .track-stat:first-child {
+        padding-left: 0;
+    }
+
+    .track-stat strong {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        width: min(calc(100% - 40px), 620px);
+    }
+
+    .content-section,
+    .classification-section {
+        padding-top: 36px;
+    }
+
+    .section-heading h2 {
+        font-size: 1.55rem;
+    }
+
+    .drivers {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .driver-card {
+        min-height: 116px;
+        padding: 10px 12px;
+    }
+
+    .car-number {
+        font-size: 2.8rem;
+    }
+
+    .driver-name {
+        font-size: .78rem;
+    }
+
+    .filters {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filter-button {
+        width: 100%;
+    }
+
+    table {
+        min-width: 650px;
+    }
+
+    td {
+        white-space: nowrap;
+    }
+
+    .tickets {
+        padding-top: 40px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .ticket-form {
+        padding: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .topbar {
+        padding-inline: 14px;
+    }
+
+    .logo {
+        font-size: 1.08rem;
+    }
+
+    .topbar-button {
+        padding-inline: 9px;
+        font-size: .56rem;
+    }
+
+    .hero {
+        padding-inline: 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-actions .btn-primary,
+    .hero-actions .btn-outline {
+        flex: 1;
+        padding-inline: 8px;
+        font-size: .58rem;
+    }
+
+    .container {
+        width: calc(100% - 32px);
+    }
+
+    .driver-card {
+        padding-inline: 10px;
+    }
+
+    .driver-name {
+        font-size: .72rem;
+    }
+
+    .ticket-form {
+        padding: 15px;
+    }
+}
